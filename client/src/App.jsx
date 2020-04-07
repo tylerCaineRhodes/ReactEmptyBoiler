@@ -8,8 +8,9 @@ class App extends React.Component {
 
     this.state = {
       todolist: ['learn to code', 'make todolist', 'get paid'],
-      input: ''
+      input: '',
     }
+    
     this.onInputChange = this.onInputChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
     this.doneButtonClick = this.doneButtonClick.bind(this);
@@ -28,8 +29,15 @@ class App extends React.Component {
     })
   }
 
-  doneButtonClick(){
-    console.log('lies')
+  doneButtonClick(e){
+    console.log(e.target.value)
+    let newStateList = this.state.todolist.filter((item) => {
+      return item !== e.target.value
+    })
+    this.setState({
+      todolist: newStateList
+    })
+    
   }
 
   render () {

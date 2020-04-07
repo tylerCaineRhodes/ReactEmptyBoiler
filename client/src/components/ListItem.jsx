@@ -4,7 +4,7 @@ function ListItem(props){
   return ( 
     <div>
       <span>{props.todoitem}</span>
-      <button onClick={props.doneButtonClick}>Done</button>
+      <button onClick={props.doneButtonClick} value={props.todoitem} >Done</button>
     </div>
   )
 }
