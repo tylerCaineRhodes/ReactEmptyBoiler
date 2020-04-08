@@ -30,14 +30,12 @@ class App extends React.Component {
   }
 
   doneButtonClick(e){
-    console.log(e.target.value)
     let newStateList = this.state.todolist.filter((item) => {
       return item !== e.target.value
     })
     this.setState({
       todolist: newStateList
     })
-    
   }
 
   render () {
