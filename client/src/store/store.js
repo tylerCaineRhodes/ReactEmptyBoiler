@@ -9,6 +9,6 @@ let initialState = {
 
 export default createStore(
   rootReducer,
-  initialState,
+  {initialState},
   applyMiddleware(poop)
 );

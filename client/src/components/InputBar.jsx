@@ -1,6 +1,7 @@
 import React from 'react';
 
-function InputBar({onInputChange, value, onSubmit}) {
+//map value and onSubmit
+const InputBar = ({onInputChange, value, onSubmit}) => {
   return (
     <div>
       <input onChange={onInputChange} value={value} ></input>
