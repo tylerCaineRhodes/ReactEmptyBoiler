@@ -4,7 +4,7 @@ import React from 'react';
 //onchange can update the state and onsubmit can append that state to the list
 const InputBar = ({onSubmit}) => {
   let input;
-  
+
   return (
     // <div>
     //   <input ref={node => (input = node)}></input>
@@ -17,8 +17,8 @@ const InputBar = ({onSubmit}) => {
         onSubmit(input.value)
         document.getElementById('best').reset();
       }}>
-      <input ref={node => (input = node)}></input>
-      <button type="submit">Submit</button>
+        <input ref={node => (input = node)}></input>
+        <button type="submit">Submit</button>
       </form>
     </div>
   )

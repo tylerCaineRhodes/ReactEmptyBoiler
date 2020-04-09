@@ -8,7 +8,6 @@ const todosReducer = (state=[], action) => {
       return state.filter((item) => (
         item !== action.task
       ));
-
     default:
       return state;
   }
