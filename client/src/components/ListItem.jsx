@@ -1,10 +1,10 @@
 import React from 'react';
 
-function ListItem(props){
+function ListItem({todoitem, doneButtonClick}){
   return ( 
     <div>
-      <span>{props.todoitem}</span>
-      <button onClick={props.doneButtonClick} value={props.todoitem} >Done</button>
+      <span>{todoitem}</span>
+      <button onClick={doneButtonClick} value={todoitem} >Done</button>
     </div>
   )
 }
