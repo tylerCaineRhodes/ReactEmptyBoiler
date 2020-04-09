@@ -4,7 +4,7 @@ const ListItem = ({todoitem, doneButtonClick}) => {
   return ( 
     <div>
       <span>{todoitem}</span>
-      <button onClick={doneButtonClick} value={todoitem}>Done</button>
+      <button onClick={(e) => {doneButtonClick(e.target.value)}} value={todoitem}>Done</button>
     </div>
   )
 }

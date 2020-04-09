@@ -1,11 +1,13 @@
 import React from 'react';
 
 //map value and onSubmit
-const InputBar = ({onInputChange, value, onSubmit}) => {
+//onchange can update the state and onsubmit can append that state to the list
+const InputBar = ({onSubmit}) => {
+  var input;
   return (
     <div>
-      <input onChange={onInputChange} value={value} ></input>
-      <button onClick={onSubmit}>Submit</button>
+      <input ref={node => (input = node)}></input>
+      <button onClick={() => onSubmit(input.value)}>Submit</button>
     </div>
   )
 };

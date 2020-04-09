@@ -1,7 +1,9 @@
-import Redux from 'redux';
-
-const deleteTaskReducer = (state = null, action) => {
+const todosReducer = (state = null, action) => {
   switch(action.type) {
+    case 'SUBMIT_TASK':
+      return [
+        ...state, action.task
+      ];
     case 'DELETE_TASK':
       return state.filter((item) => (
         item !== action.task
@@ -11,5 +13,4 @@ const deleteTaskReducer = (state = null, action) => {
       return state;
   }
 }
-
-export default deleteTaskReducer;
+export default todosReducer;

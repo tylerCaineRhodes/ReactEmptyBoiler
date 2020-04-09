@@ -1,5 +1,5 @@
 import {createStore, applyMiddleware} from 'redux';
-import poop from 'redux-thunk';
+import thunk from 'redux-thunk';
 import rootReducer from '../reducers/main.js';
 
 
@@ -7,8 +7,10 @@ let initialState = {
   todolist: ['make todo list', 'learn to code', 'make allthe monz']
 };
 
-export default createStore(
+const store = createStore(
   rootReducer,
-  {initialState},
-  applyMiddleware(poop)
+  initialState,
+  applyMiddleware(thunk)
 );
+
+export default store;

@@ -1,13 +1,15 @@
 import React from 'react';
-import InputBar from './components/InputBar'
-import List from './components/List';
+import store from './store/store';
+import ListContainer from './containers/List';
+import InputBarContainer from './containers/InputBar';
 
 const App = () => {
+  console.log(store.getState());
   return (
     <div>
-      <h1>toDo list</h1> 
-      <InputBar />
-      <List />
+      <h1>toDo list thing</h1>
+      <InputBarContainer />
+      <ListContainer />
     </div>
   )
 }
