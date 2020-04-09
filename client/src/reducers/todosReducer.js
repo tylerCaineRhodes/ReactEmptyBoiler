@@ -1,4 +1,4 @@
-const todosReducer = (state = null, action) => {
+const todosReducer = (state=[], action) => {
   switch(action.type) {
     case 'SUBMIT_TASK':
       return [

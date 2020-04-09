@@ -5,9 +5,21 @@ import React from 'react';
 const InputBar = ({onSubmit}) => {
   var input;
   return (
+    // <div>
+    //   <input ref={node => (input = node)}></input>
+    //   <button onClick={() => onSubmit(input.value)}>Submit</button>
+    // </div>
+
+    
     <div>
+      <form id='best' onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit(input.value)
+        document.getElementById('best').reset();
+      }}>
       <input ref={node => (input = node)}></input>
-      <button onClick={() => onSubmit(input.value)}>Submit</button>
+      <button type="submit">Submit</button>
+      </form>
     </div>
   )
 };
