@@ -1,8 +1,6 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-//map todolist and donebuttonclick 
-
 const List = ({todolist, doneButtonClick}) => {
   return (
     <div>

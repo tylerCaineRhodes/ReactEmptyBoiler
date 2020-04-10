@@ -1,10 +1,10 @@
 import React from 'react';
-import store from './store/store';
+// import store from './store/store';
 import ListContainer from './containers/List';
 import InputBarContainer from './containers/InputBar';
 
 const App = () => {
-  console.log(store.getState());
+  // console.log(store.getState());
   return (
     <div>
       <h1>toDo list thing</h1>
