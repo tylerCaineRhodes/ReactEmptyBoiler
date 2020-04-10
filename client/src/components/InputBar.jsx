@@ -6,11 +6,6 @@ const InputBar = ({onSubmit}) => {
   let input;
 
   return (
-    // <div>
-    //   <input ref={node => (input = node)}></input>
-    //   <button onClick={() => onSubmit(input.value)}>Submit</button>
-    // </div>
-
     <div>
       <form id='best' onSubmit={(e) => {
         e.preventDefault();
