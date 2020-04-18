@@ -9,14 +9,13 @@ app.use(express.static(path.join(__dirname, "../client/dist/")));
 app.use(bodyParser.json());
 
 app.get("/tasks", (req, res) => {
-  getTasks((err, data) => {
-    if (err) {
-      console.log("err in getting tasks from server");
-      res.sendStatus(500);
-    } else {
-      res.send(data);
-    }
-  });
+  getTasks()
+  .then((data) => {
+    res.send(data)
+  })
+  .catch((err) => {
+    res.sendStatus(500)
+  })
 });
 
 app.post("/tasks", (req, res) => {
@@ -25,7 +24,7 @@ app.post("/tasks", (req, res) => {
       res.send(data);
     })
     .catch((err) => {
-      res.status(500).send("err in posting task from server.js", err);
+      res.status(500).send(err);
     });
 });
 
