@@ -1,13 +1,13 @@
 import React from 'react';
 import ListItem from './ListItem';
 
-function List(props){
+function List({todolist, doneButtonClick}){
   return (
     <div>
       <ul>
-        {props.todolist.map((thing, i) => (
-          <div key={i}>
-            <ListItem todoitem={thing} doneButtonClick={props.doneButtonClick} />
+        {todolist.map((thing) => (
+          <div key={thing.id}>
+            <ListItem todoitem={thing.task} doneButtonClick={doneButtonClick} />
           </div>
         ))}
       </ul>
