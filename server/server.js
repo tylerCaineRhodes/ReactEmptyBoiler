@@ -20,7 +20,6 @@ app.get('/allTasks', (req, res) => {
 });
 
 app.post('/postTask', (req, res) => {
-    // console.log('here is the task -->', req.body.task)
     postTask(req.body.task, (err, data) => {
         if(err){
             console.log('err in postTask in server')
@@ -32,7 +31,6 @@ app.post('/postTask', (req, res) => {
 })
 
 app.delete('/deleteTask', (req, res) => {
-    // console.log('here is from delete -->', req.query.task)
     deleteTask(req.query.task, (err, data) => {
         if(err){
             console.log('err in deleting task in server')

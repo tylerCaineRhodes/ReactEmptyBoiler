@@ -9,7 +9,7 @@ class App extends React.Component {
 
     this.state = {
       todolist: [],
-      input: "",
+      input: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -23,8 +23,8 @@ class App extends React.Component {
   }
 
   getToDos() {
-    Axios.get("/allTasks").then((response) => {
-      console.log("this is from the get request", response);
+    Axios.get('/allTasks').then((response) => {
+      console.log('this is from the get request', response);
       this.setState({
         todolist: response.data,
       });
@@ -38,32 +38,28 @@ class App extends React.Component {
   }
 
   onSubmit() {
-    // console.log('clicked!', this.state.input)
-    Axios.post("/postTask", {
+    Axios.post('/postTask', {
       task: this.state.input,
     })
-      .then((response) => {
-        // console.log('succesfully posted a task -->', response)
-        this.setState({
-          input: "",
-        });
-      })
-      .then(() => this.getToDos())
-      .catch((err) => {
-        console.log("something went wrong with posting a task", err);
+    .then((response) => {
+      this.setState({
+        input: '',
       });
+    })
+    .then(() => this.getToDos())
+    .catch((err) => {
+      console.log('something went wrong with posting a task', err);
+    });
   }
 
   doneButtonClick(e) {
-    // const task = e.target.value;
-    // console.log('id from client -->', task);
-    Axios.delete("/deleteTask", {
+    Axios.delete('/deleteTask', {
       params: { task: e.target.value },
     })
-      .then(() => {
-        this.getToDos();
-      })
-      .catch((err) => console.log("couldn't delet task from client -->", err));
+    .then(() => {
+      this.getToDos();
+    })
+    .catch((err) => console.log('couldn\'t delet task from client -->', err));
   }
 
   render() {
