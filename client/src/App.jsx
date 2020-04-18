@@ -3,7 +3,7 @@ import InputBar from "./components/InputBar";
 import List from "./components/List";
 import Axios from "axios";
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -77,5 +77,3 @@ class App extends React.Component {
     );
   }
 }
-
-export default App;
