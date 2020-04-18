@@ -4,7 +4,7 @@ function ListItem({todoitem, deleteTask, id}){
   return ( 
     <div key={id}>
       <span>{todoitem}</span>
-      <button onClick={() => deleteTask(id)} value={todoitem}>Delete</button>
+      <button onClick={() => deleteTask(id)}>Delete</button>
     </div>
   )
 }
