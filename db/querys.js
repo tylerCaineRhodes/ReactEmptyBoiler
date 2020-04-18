@@ -14,36 +14,42 @@ connection.connect(err => {
   }
 });
 
-const postTask = (task, callback) => {
-  connection.query(`insert into tasks (task) values ('${task}')`,(err, data) => {
-    if(err){
-      console.log('something went wrong in posting a task in query')
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
+const postTask = (task) => {
+  return new Promise((resolve, reject) => {
+    connection.query(`insert into tasks (task) values ('${task}')`,(err, data) => {
+      if(err){
+        console.log('something went wrong in posting a task in query')
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
   })
 }
 
-const getTasks = (callback) => {
-  connection.query(`select * from tasks`,(err, data) => {
-    if(err){
-      console.log('something went wrong when getting all tasks in query')
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
+const getTasks = () => {
+  return new Promise((resolve, reject) => {
+    connection.query(`select * from tasks`,(err, data) => {
+      if(err){
+        console.log('something went wrong when getting all tasks in query')
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
   })
 }
 
-const deleteTask = (id, callback) => {
-  connection.query(`delete from tasks where id = '${id}'`,(err, data) => {
-    if(err){
-      console.log('something went wrong with deleting a task in the query')
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
+const deleteTask = (id) => {
+  return new Promise((resolve, reject) => {
+    connection.query(`delete from tasks where id = '${id}'`,(err, data) => {
+      if(err){
+        console.log('something went wrong with deleting a task in the query')
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
   })
 }
 
