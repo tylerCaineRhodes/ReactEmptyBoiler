@@ -36,8 +36,8 @@ const getTasks = (callback) => {
   })
 }
 
-const deleteTask = (task, callback) => {
-  connection.query(`delete from tasks where task = '${task}'`,(err, data) => {
+const deleteTask = (id, callback) => {
+  connection.query(`delete from tasks where id = '${id}'`,(err, data) => {
     if(err){
       console.log('something went wrong with deleting a task in the query')
       callback(err, null)

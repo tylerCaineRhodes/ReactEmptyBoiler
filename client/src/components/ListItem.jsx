@@ -1,10 +1,10 @@
 import React from 'react';
 
-function ListItem(props){
+function ListItem({todoitem, deleteTask, id}){
   return ( 
-    <div>
-      <span>{props.todoitem}</span>
-      <button onClick={props.doneButtonClick} value={props.todoitem} >Done</button>
+    <div key={id}>
+      <span>{todoitem}</span>
+      <button onClick={() => deleteTask(id)} value={todoitem}>Delete</button>
     </div>
   )
 }

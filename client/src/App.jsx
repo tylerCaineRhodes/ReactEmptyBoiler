@@ -8,13 +8,13 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      todolist: [],
+      todolist: ['hello', 'goodbye', 'sayonara'],
       input: '',
     };
 
     this.onInputChange = this.onInputChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.doneButtonClick = this.doneButtonClick.bind(this);
+    this.addTask = this.addTask.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
     this.getToDos = this.getToDos.bind(this);
   }
 
@@ -23,7 +23,7 @@ class App extends React.Component {
   }
 
   getToDos() {
-    Axios.get('/allTasks').then((response) => {
+    Axios.get('/tasks').then((response) => {
       console.log('this is from the get request', response);
       this.setState({
         todolist: response.data,
@@ -37,8 +37,8 @@ class App extends React.Component {
     });
   }
 
-  onSubmit() {
-    Axios.post('/postTask', {
+  addTask() {
+    Axios.post('/tasks', {
       task: this.state.input,
     })
     .then((response) => {
@@ -52,10 +52,8 @@ class App extends React.Component {
     });
   }
 
-  doneButtonClick(e) {
-    Axios.delete('/deleteTask', {
-      params: { task: e.target.value },
-    })
+  deleteTask(id) {
+    Axios.delete(`/tasks/${id}`)
     .then(() => {
       this.getToDos();
     })
@@ -69,11 +67,11 @@ class App extends React.Component {
         <InputBar
           value={this.state.input}
           onInputChange={this.onInputChange}
-          onSubmit={this.onSubmit}
+          addTask={this.addTask}
         />
         <List
           todolist={this.state.todolist}
-          doneButtonClick={this.doneButtonClick}
+          deleteTask={this.deleteTask}
         />
       </div>
     );

@@ -1,10 +1,10 @@
 import React from 'react';
 
-function InputBar(props) {
+function InputBar({addTask, value, onInputChange}) {
   return (
     <div>
-      <input onChange={props.onInputChange} value={props.value} ></input>
-      <button onClick={props.onSubmit}>Submit</button>
+      <input onChange={onInputChange} value={value}></input>
+      <button onClick={addTask}>Submit</button>
     </div>
   )
 };
