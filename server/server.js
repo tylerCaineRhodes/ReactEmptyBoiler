@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
-const port = 1234;
+require('dotenv').config();
+const port = process.env.PORT;
 const { postTask, getTasks, deleteTask } = require("../db/querys.js");
 
 app.use(express.static(path.join(__dirname, "../client/dist/")));
