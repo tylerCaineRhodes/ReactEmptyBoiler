@@ -10,12 +10,12 @@ app.use(bodyParser.json());
 
 app.get("/tasks", (req, res) => {
   getTasks()
-  .then((data) => {
-    res.send(data)
-  })
-  .catch((err) => {
-    res.sendStatus(500)
-  })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.sendStatus(500);
+    });
 });
 
 app.post("/tasks", (req, res) => {
