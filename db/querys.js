@@ -19,7 +19,8 @@ connection.connect(err => {
 
 const postTask = (task) => {
   return new Promise((resolve, reject) => {
-    connection.query(`insert into tasks (task) values ('${task}')`,(err, data) => {
+    const query = 'insert into tasks (task) values (?)';
+    connection.query(query,[task],(err, data) => {
       if(err){
         console.log('something went wrong in posting a task in query')
         reject(err)
@@ -45,7 +46,8 @@ const getTasks = () => {
 
 const deleteTask = (id) => {
   return new Promise((resolve, reject) => {
-    connection.query(`delete from tasks where id = '${id}'`,(err, data) => {
+    const query = 'delete from tasks where id = ?'
+    connection.query(query, [id], (err, data) => {
       if(err){
         console.log('something went wrong with deleting a task in the query')
         reject(err)
