@@ -19,45 +19,32 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getToDos();
+    //get data on initial render
+    this.getToDos()
   }
 
   getToDos() {
-    Axios.get('/tasks').then((response) => {
-      console.log('this is from the get request', response);
-      this.setState({
-        todolist: response.data,
-      });
-    });
+    console.log('this gets data and is called in componentDidMount')
+    //write get request
+  
   }
 
+  
+  addTask() {
+    console.log('this does a post request');
+    //write post request
+    
+  }
+  
+  deleteTask(id) {
+    console.log(`this deletes an id matching ${id}`);
+    //write delete request
+  }
+  
   onInputChange(event) {
     this.setState({
       input: event.target.value,
     });
-  }
-
-  addTask() {
-    Axios.post('/tasks', {
-      task: this.state.input,
-    })
-    .then((response) => {
-      this.setState({
-        input: '',
-      });
-    })
-    .then(() => this.getToDos())
-    .catch((err) => {
-      console.log('something went wrong with posting a task', err);
-    });
-  }
-
-  deleteTask(id) {
-    Axios.delete(`/tasks/${id}`)
-    .then(() => {
-      this.getToDos();
-    })
-    .catch((err) => console.log('couldn\'t delet task from client -->', err));
   }
 
   render() {
