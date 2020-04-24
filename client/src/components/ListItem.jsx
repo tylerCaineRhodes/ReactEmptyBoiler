@@ -1,12 +1,10 @@
 import React from 'react';
 
-function ListItem(props){
-  return ( 
-    <div>
-      <span>{props.todoitem}</span>
-      <button onClick={props.doneButtonClick} value={props.todoitem} >Done</button>
-    </div>
-  )
-}
+const ListItem = ({ todoitem, doneButtonClick }) => (
+  <div>
+    <span>{todoitem}</span>
+    <button onClick={doneButtonClick} value={todoitem} >Done</button>
+  </div>
+);
 
-export default ListItem;
+export default ListItem
