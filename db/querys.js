@@ -1,28 +1,60 @@
-const mysql = require('mysql');
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'todolist'
-});
+require('dotenv').config();
+const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectID;
+const dbName = 'todolist';
 
-connection.connect(err => {
-  if(err){
-    console.log('couldn\'t connect to database')
-  } else {
-    console.log('connected to mysql database!')
-  }
-});
+MongoClient.connect(process.env.MONGO_STRING, { useUnifiedTopology: true })
+  .then((client) => {
+    console.log('you connected to mongo');
+    const db = client.db(dbName);
+    const tasks = db.collection('tasks');
+
+    app.post('/tasks', (req, res) => {
+      console.log(req.body.data);
+      tasks.insertOne(req.body.data)
+        .then((result) => {
+          res.send(result);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    });
+
+    app.get('/tasks', (req, res) => {
+      tasks.find({}).toArray((err, results) => {
+        if (err) {
+          console.log('err in getting tasks');
+        }
+        console.log(results);
+        res.send(results);
+      });
+    });
+
+    app.delete('/tasks/:id', (req, res) => {
+      tasks.deleteOne({ _id: ObjectId(req.params.id) }, (err, results) => {
+        if (err) {
+          console.log('something bad in delete');
+        } else {
+          console.log('deleted the thing?');
+          res.send(results);
+        }
+      });
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 
 const postTask = (task, callback) => {
-  connection.query(`insert into tasks (task) values ('${task}')`,(err, data) => {
-    if(err){
-      console.log('something went wrong in posting a task in query')
-      callback(err, null)
-    } else {
-      callback(null, data)
-    }
-  })
+  tasks.insertOne(task)
+    .then((result) => {
+      callback(result);
+    })
+    .catch((err) => {
+      console.error(err);
+      callback(err)
+    });
 }
 
 const getTasks = (callback) => {
@@ -47,4 +79,4 @@ const deleteTask = (id, callback) => {
   })
 }
 
-module.exports = {postTask, getTasks, deleteTask}
+// export default {postTask, getTasks, deleteTask}

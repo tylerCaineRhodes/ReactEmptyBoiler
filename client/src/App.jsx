@@ -39,7 +39,7 @@ export default class App extends React.Component {
 
   addTask() {
     Axios.post('/tasks', {
-      task: this.state.input,
+      data: {task: this.state.input},
     })
     .then((response) => {
       this.setState({

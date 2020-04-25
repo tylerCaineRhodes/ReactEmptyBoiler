@@ -6,7 +6,7 @@ const List = ({todolist, deleteTask}) => (
     <ul>
       {todolist.map((thing, i) => (
         <div key={i}>
-          <ListItem id={thing.id} todoitem={thing.task} deleteTask={deleteTask} />
+          <ListItem id={thing._id} todoitem={thing.task} deleteTask={deleteTask} />
         </div>
       ))}
     </ul>
