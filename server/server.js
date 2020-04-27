@@ -15,7 +15,7 @@ app.get("/tasks", (req, res) => {
       res.sendStatus(500);
     } else {
       res.send(data);
-    }
+    };
   });
 });
 
@@ -26,7 +26,7 @@ app.post("/tasks", (req, res) => {
       res.sendStatus(500);
     } else {
       res.send(data);
-    }
+    };
   });
 });
 
@@ -37,7 +37,7 @@ app.delete("/tasks/:id", (req, res) => {
       res.sendStatus(500);
     } else {
       res.send(data);
-    }
+    };
   });
 });
 

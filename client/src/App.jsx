@@ -16,11 +16,11 @@ export default class App extends React.Component {
     this.addTask = this.addTask.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.getToDos = this.getToDos.bind(this);
-  }
+  };
 
   componentDidMount() {
     this.getToDos();
-  }
+  };
 
   getToDos() {
     Axios.get('/tasks').then((response) => {
@@ -29,13 +29,13 @@ export default class App extends React.Component {
         todolist: response.data,
       });
     });
-  }
+  };
 
   onInputChange(event) {
     this.setState({
       input: event.target.value,
     });
-  }
+  };
 
   addTask() {
     Axios.post('/tasks', {
@@ -50,7 +50,7 @@ export default class App extends React.Component {
     .catch((err) => {
       console.log('something went wrong with posting a task', err);
     });
-  }
+  };
 
   deleteTask(id) {
     Axios.delete(`/tasks/${id}`)
@@ -58,7 +58,7 @@ export default class App extends React.Component {
       this.getToDos();
     })
     .catch((err) => console.log('couldn\'t delet task from client -->', err));
-  }
+  };
 
   render() {
     return (
@@ -75,5 +75,5 @@ export default class App extends React.Component {
         />
       </div>
     );
-  }
-}
+  };
+};
