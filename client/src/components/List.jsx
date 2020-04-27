@@ -2,7 +2,7 @@ import React from 'react';
 import ListItem from './ListItem';
 
 const List = ({ todolist, deleteTask, updateTask, getToDos }) => (
-  <div>
+  <div className='list'>
     <ul>
       {todolist.map((thing, i) => (
         <div key={i}>

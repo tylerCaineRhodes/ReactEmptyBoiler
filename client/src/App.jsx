@@ -62,8 +62,8 @@ export default class App extends React.Component {
     const {input, todolist} = this.state;
 
     return (
-      <div>
-        <h1>toDo list</h1>
+      <div className='todolist'>
+        <h1 className ='title'>todolist</h1>
         <InputBar
           value={input}
           onInputChange={this.onInputChange}
