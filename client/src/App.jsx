@@ -13,8 +13,6 @@ export default class App extends React.Component {
     };
 
     this.onInputChange = this.onInputChange.bind(this);
-    this.addTask = this.addTask.bind(this);
-    this.deleteTask = this.deleteTask.bind(this);
     this.getToDos = this.getToDos.bind(this);
   }
 
@@ -24,24 +22,24 @@ export default class App extends React.Component {
 
   getToDos() {
     Axios.get('/tasks').then((response) => {
-      console.log('this is from the get request', response);
       this.setState({
         todolist: response.data,
       });
     });
-  }
+  };
 
   onInputChange(event) {
     this.setState({
       input: event.target.value,
     });
-  }
+  };
 
   addTask() {
+    const { input } = this.state;
     Axios.post('/tasks', {
-      task: this.state.input,
+      task: input,
     })
-    .then((response) => {
+    .then(() => {
       this.setState({
         input: '',
       });
@@ -50,7 +48,7 @@ export default class App extends React.Component {
     .catch((err) => {
       console.log('something went wrong with posting a task', err);
     });
-  }
+  };
 
   deleteTask(id) {
     Axios.delete(`/tasks/${id}`)
@@ -58,22 +56,26 @@ export default class App extends React.Component {
       this.getToDos();
     })
     .catch((err) => console.log('couldn\'t delet task from client -->', err));
-  }
+  };
 
   render() {
+    const {input, todolist} = this.state;
+
     return (
       <div>
         <h1>toDo list</h1>
         <InputBar
-          value={this.state.input}
+          value={input}
           onInputChange={this.onInputChange}
-          addTask={this.addTask}
+          addTask={this.addTask.bind(this)}
         />
         <List
-          todolist={this.state.todolist}
-          deleteTask={this.deleteTask}
+          todolist={todolist}
+          deleteTask={this.deleteTask.bind(this)}
+          updateTask={this.updateTask}
+          getToDos={this.getToDos}
         />
       </div>
     );
-  }
-}
+  };
+};

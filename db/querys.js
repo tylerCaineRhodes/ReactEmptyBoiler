@@ -1,61 +1,44 @@
 require('dotenv').config();
-const mysql = require('mysql');
 
+const mongoose = require('mongoose');
+const { Task } = require('./schema.js');
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
+mongoose.connect(process.env.MONGO_STRING, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-connection.connect(err => {
-  if(err){
-    console.log('couldn\'t connect to database')
-  } else {
-    console.log('connected to mysql database!')
-  }
+
+const mongoCommand = mongoose.connection;
+mongoCommand.once('open', () => {
+  console.log('connected to the mongo database');
 });
+
+
+mongoCommand.on('error', () => {
+  console.log('nahhh bro, mongo no like dat dawg');
+});
+
+
 
 const postTask = (task) => {
-  return new Promise((resolve, reject) => {
-    const query = 'insert into tasks (task) values (?)';
-    connection.query(query,[task],(err, data) => {
-      if(err){
-        console.log('something went wrong in posting a task in query')
-        reject(err)
-      } else {
-        resolve(data)
-      }
-    })
-  })
-}
+  const newTask = new Task({ task });
+  return newTask.save();
+};
+
 
 const getTasks = () => {
-  return new Promise((resolve, reject) => {
-    connection.query(`select * from tasks`,(err, data) => {
-      if(err){
-        console.log('something went wrong when getting all tasks in query')
-        reject(err)
-      } else {
-        resolve(data)
-      }
-    })
-  })
-}
+  return Task.find({});
+};
+
 
 const deleteTask = (id) => {
-  return new Promise((resolve, reject) => {
-    const query = 'delete from tasks where id = ?'
-    connection.query(query, [id], (err, data) => {
-      if(err){
-        console.log('something went wrong with deleting a task in the query')
-        reject(err)
-      } else {
-        resolve(data)
-      }
-    })
-  })
-}
+  return Task.deleteOne({ _id: id });
+};
 
-module.exports = {postTask, getTasks, deleteTask}
+
+const updateTask = (id, task) => {
+  return Task.updateOne({ _id: id }, { task: task })
+};
+
+module.exports = { postTask, getTasks, deleteTask, updateTask }
