@@ -6,9 +6,9 @@ const List = ({ todolist, setTodos }) => {
   const doneButtonClick = (e) => {
     let newStateList = todolist.filter((item) => {
       return item !== e.target.value
-    })
-    setTodos(newStateList)
-  }
+    });
+    setTodos(newStateList);
+  };
 
   return (
     <div>
@@ -20,7 +20,7 @@ const List = ({ todolist, setTodos }) => {
         ))}
       </ul>
     </div>
-  )
+  );
 };
 
 export default List;

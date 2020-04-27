@@ -12,7 +12,7 @@ const App = () => {
       <InputBar todolist={todolist} setTodos={setTodos} />
       <List todolist={todolist} setTodos={setTodos} />
     </div>
-  )
-}
+  );
+};
 
 export default App;

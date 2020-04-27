@@ -7,4 +7,4 @@ const ListItem = ({ todoitem, doneButtonClick }) => (
   </div>
 );
 
-export default ListItem
+export default ListItem;
