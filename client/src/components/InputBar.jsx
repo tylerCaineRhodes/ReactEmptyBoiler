@@ -6,7 +6,7 @@ function InputBar(props) {
       <input onChange={props.onInputChange} value={props.value} ></input>
       <button onClick={props.onSubmit}>Submit</button>
     </div>
-  )
+  );
 };
 
 export default InputBar;

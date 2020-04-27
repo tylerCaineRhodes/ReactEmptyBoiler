@@ -1,5 +1,5 @@
 import React from 'react';
-import InputBar from './components/InputBar'
+import InputBar from './components/InputBar';
 import List from './components/List';
 
 class App extends React.Component {
@@ -9,7 +9,7 @@ class App extends React.Component {
     this.state = {
       todolist: ['learn to code', 'make todolist', 'get paid'],
       input: '',
-    }
+    };
     
     this.onInputChange = this.onInputChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
@@ -18,25 +18,25 @@ class App extends React.Component {
   onInputChange(event){
     this.setState({ 
       input:event.target.value
-    })
-  }
+    });
+  };
 
   onSubmit(){
-    let newList = this.state.todolist.push(this.state.input)
+    let newList = this.state.todolist.push(this.state.input);
     this.setState({
       todoList: newList,
       input: ''
-    })
-  }
+    });
+  };
 
   doneButtonClick(e){
     let newStateList = this.state.todolist.filter((item) => {
       return item !== e.target.value
-    })
+    });
     this.setState({
       todolist: newStateList
-    })
-  }
+    });
+  };
 
   render () {
     return (
@@ -45,8 +45,8 @@ class App extends React.Component {
         <InputBar value={this.state.input} onInputChange={this.onInputChange} onSubmit = {this.onSubmit} />
         <List todolist={this.state.todolist} doneButtonClick={this.doneButtonClick} />
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default App;
