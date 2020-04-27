@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     todolist: state.todolist
-  }
-}
+  };
+};
 
 const ListContainer = connect(mapStateToProps, mapDispatchToProps)(List);
 

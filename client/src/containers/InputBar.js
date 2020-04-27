@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import addTask from '../actions/addTask';//different alias here?
+import addTask from '../actions/addTask';
 import InputBar from '../components/InputBar';
 
 
@@ -11,7 +11,7 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const InputBarContainer = connect(null, mapDispatchToProps)(InputBar); //search container is written strangely
+const InputBarContainer = connect(null, mapDispatchToProps)(InputBar); 
 
 
 export default InputBarContainer;

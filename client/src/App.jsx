@@ -11,7 +11,7 @@ const App = () => {
       <InputBarContainer />
       <ListContainer />
     </div>
-  )
-}
+  );
+};
 
 export default App;

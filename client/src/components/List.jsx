@@ -7,12 +7,12 @@ const List = ({todolist, doneButtonClick}) => {
       <ul>
         {todolist.map((thing, i) => (
           <div key={i}>
-            <ListItem todoitem={thing} doneButtonClick= {doneButtonClick}/>
+            <ListItem todoitem={thing} doneButtonClick={doneButtonClick}/>
           </div>
         ))}
       </ul>
     </div>
-  )
+  );
 };
 
 export default List;

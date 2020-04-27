@@ -10,6 +10,6 @@ const todosReducer = (state=[], action) => {
       ));
     default:
       return state;
-  }
-}
+  };
+};
 export default todosReducer;

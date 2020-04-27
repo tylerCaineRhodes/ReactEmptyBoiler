@@ -6,7 +6,7 @@ const ListItem = ({todoitem, doneButtonClick}) => {
       <span>{todoitem}</span>
       <button onClick={(e) => {doneButtonClick(e.target.value)}} value={todoitem}>Done</button>
     </div>
-  )
-}
+  );
+};
 
 export default ListItem;
