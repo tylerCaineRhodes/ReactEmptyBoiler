@@ -8,7 +8,7 @@ const port = process.env.PORT;
 const { postTask, getTasks, deleteTask, updateTask } = require("../db/querys.js");
 
 app.use(express.static(path.join(__dirname, "../client/dist/")));
-app.use(cors())
+app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/tasks", (req, res) => {
@@ -50,7 +50,7 @@ app.put('/tasks', (req, res) => {
     })
     .catch(() => {
       res.sendStatus(418);
-    })
+    });
 });
 
 app.listen(port, () => {

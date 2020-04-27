@@ -14,11 +14,11 @@ export default class App extends React.Component {
 
     this.onInputChange = this.onInputChange.bind(this);
     this.getToDos = this.getToDos.bind(this);
-  }
+  };
 
   componentDidMount() {
     this.getToDos();
-  }
+  };
 
   getToDos() {
     Axios.get('/tasks').then((response) => {

@@ -7,7 +7,7 @@ const ListItem = ({todoitem, deleteTask, id, getToDos}) =>  {
   const [input, changeInput] = useState('');
 
   const handleChange = (event) => {
-    changeInput(event.target.value)
+    changeInput(event.target.value);
   };
 
   const updateTask = (id, task) => {

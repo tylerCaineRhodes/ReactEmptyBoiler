@@ -38,7 +38,7 @@ const deleteTask = (id) => {
 
 
 const updateTask = (id, task) => {
-  return Task.updateOne({ _id: id }, { task: task })
+  return Task.updateOne({ _id: id }, { task: task });
 };
 
-module.exports = { postTask, getTasks, deleteTask, updateTask }
+module.exports = { postTask, getTasks, deleteTask, updateTask };

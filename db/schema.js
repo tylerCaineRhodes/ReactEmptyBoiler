@@ -7,5 +7,5 @@ const DataSchema = new Schema(
     task: String
   }
 );
-const Task = mongoose.model('tasks', DataSchema)
-module.exports = {Task} ;
+const Task = mongoose.model('tasks', DataSchema);
+module.exports = {Task};
