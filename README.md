@@ -1,7 +1,7 @@
 # ReactEmptyBoiler
 This repository was built to provide students with a boilerplate setup for building a full stack CRUD app with a SERN stack.
 There are branches with example apps utilizing various technologies such as Redux, Mongoose, MongoClient, MySQL, etc. 
-<img src = ''  align="right"/>
+<img src = './assets/listScreenshot.png'  width='190px' align="right"/>
 
 
 ## Technologies
